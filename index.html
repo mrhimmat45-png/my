@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Family ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+background:linear-gradient(135deg,#141E30,#243B55);
+}
+
+/* Background Hearts */
+body::before{
+content:"❤️ ❤️ 💖 💙 ❤️ 💖";
+position:absolute;
+font-size:35px;
+width:100%;
+height:100%;
+display:flex;
+justify-content:space-around;
+align-items:center;
+animation:move 10s linear infinite;
+opacity:.25;
+}
+
+@keyframes move{
+0%{transform:translateY(100%);}
+100%{transform:translateY(-120%);}
+}
+
+.center{
+text-align:center;
+z-index:10;
+}
+
+#emoji{
+font-size:110px;
+cursor:pointer;
+transition:.4s;
+filter:drop-shadow(0 0 25px yellow);
+animation:float 2s infinite alternate;
+}
+
+@keyframes float{
+from{transform:translateY(0);}
+to{transform:translateY(-15px);}
+}
+
+#emoji:hover{
+transform:scale(1.2) rotate(10deg);
+}
+
+.card{
+position:absolute;
+top:50%;
+transform:translateY(-50%) scale(0);
+width:230px;
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(12px);
+border-radius:20px;
+box-shadow:0 0 30px rgba(255,255,255,.4);
+padding:12px;
+transition:.6s;
+text-align:center;
+color:white;
+}
+
+.left{
+left:20px;
+}
+
+.right{
+right:20px;
+}
+
+.card img{
+width:100%;
+height:260px;
+border-radius:15px;
+object-fit:cover;
+border:4px solid white;
+}
+
+.card h2{
+margin-top:10px;
+}
+
+.showLeft{
+transform:translateY(-50%) scale(1) rotate(-4deg);
+}
+
+.showRight{
+transform:translateY(-50%) scale(1) rotate(4deg);
+}
+
+button{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:#ff4081;
+color:white;
+font-size:18px;
+cursor:pointer;
+box-shadow:0 0 20px pink;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+}
+</style>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="card left" id="mummy">
+<img src="mummy.jpg">
+<h2>❤️ My Lovely Mummy ❤️</h2>
+</div>
+
+<div class="center">
+<div id="emoji">😊</div>
+<button onclick="openCards()">Open My Family</button>
+</div>
+
+<div class="card right" id="papa">
+<img src="papa.jpg">
+<h2>💙 My Hero Papa 💙</h2>
+</div>
+
+<script>
+
+let opened=false;
+
+function openCards(){
+
+opened=!opened;
+
+if(opened){
+
+mummy.classList.add("showLeft");
+papa.classList.add("showRight");
+
+emoji.innerHTML="🥰";
+document.body.style.background=
+"linear-gradient(135deg,#ff512f,#dd2476)";
+
+}else{
+
+mummy.classList.remove("showLeft");
+papa.classList.remove("showRight");
+
+emoji.innerHTML="😊";
+document.body.style.background=
+"linear-gradient(135deg,#141E30,#243B55)";
+
+}
+
+}
+
+emoji.onclick=openCards;
+
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
